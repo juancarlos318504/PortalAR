@@ -217,7 +217,12 @@ function initialize()
 	domEvents.addEventListener(portal, 'mousedown', function(event){
 		console.log('you clicked on the mesh');
 		window.open("https://juancarlos318504.github.io/360/")
-	}, false)
+	}, false);
+	
+	domEvents.addEventListener(portal,'touchend', function(event){
+		console.log('you clicked on the mesh');
+		window.open("https://juancarlos318504.github.io/360/")
+	}, false);
 
 	portal.rotation.x =90;
 	portalBorderMesh.rotation.x=90;
