@@ -211,7 +211,7 @@ function initialize()
 	//Button.scale = 0.9;
 	smoothedRoot.add(Button);
 	var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-	domEvents.addEventListener(Button, 'mousedown', function(event){
+	domEvents.addEventListener(portal, 'mousedown', function(event){
 		console.log('you clicked on the mesh');
 		window.open("https://juancarlos318504.github.io/360/")
 	}, false)
