@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<title>Hello, AR Cube!</title>
+	<title>Portal AR</title>
+	<link rel="icon" href="https://kaleidolab.co/wp-content/uploads/2018/05/cropped-LOGO-POSITIVO-01-32x32.png">
 	<!-- include three.js library -->
 	<script src='js/three.js'></script>
 	<script src='js/OBJLoader.js'></script>
@@ -138,6 +139,7 @@ function initialize()
 		// minVisibleDelay: 1,
 		// minUnvisibleDelay: 1,
 	});
+	
 
 	////////////////////////////////////////////////////////////
 	// setup scene
@@ -166,6 +168,7 @@ function initialize()
 	portal.position.y = portalHeight/2 + portalBorder;
 	portal.layers.set(1);
 	smoothedRoot.add(portal);
+	
 	
 	camera.layers.enable(1);
 	
@@ -211,12 +214,16 @@ function initialize()
 	//Button.scale = 0.9;
 	smoothedRoot.add(Button);
 	var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-	domEvents.addEventListener(portal, 'mousedown', function(event){
+	domEvents.addEventListener(Button, 'mousedown', function(event){
 		console.log('you clicked on the mesh');
 		window.open("https://juancarlos318504.github.io/360/")
 	}, false)
 
-
+	portal.rotation.x =90;
+	portalBorderMesh.rotation.x=90;
+	Button.rotation.x = -70;
+	Button.position.z = -(portalHeight)*Math.sin(70);
+	Button.position.y = (Math.sin(70))*portalHeight;
 
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
@@ -232,6 +239,7 @@ function initialize()
 					object.position.x = -portalWidth;
 					object.position.y = 1.3;
 					object.rotation.y = -90;
+					object.rotation.x = -70;
 					object.scale.set(3,3,3);
 					smoothedRoot.add(object);
 				}, onProgress, onError );
